@@ -1,0 +1,114 @@
+@import "tailwindcss";
+@import "lenis/dist/lenis.css";
+
+:root {
+  --ink-ground: #0b0b0a;
+  --ink-surface: #141412;
+  --ink-elevated: #1c1b18;
+  --ink-border: rgba(244, 240, 232, 0.12);
+  --ink-border-strong: rgba(244, 240, 232, 0.24);
+
+  --paper-ground: #f2efe9;
+  --paper-surface: #e6e1d7;
+  --paper-border: rgba(20, 19, 17, 0.14);
+  --paper-border-strong: rgba(20, 19, 17, 0.28);
+
+  --text-light: #f4f0e8;
+  --text-light-muted: #a9a397;
+  --text-dark: #141311;
+  --text-dark-muted: #57534b;
+
+  --accent: #e84a27;
+  --accent-hover: #ff5b36;
+  --brass: #c8b89a;
+
+  --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@theme inline {
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-syne), var(--font-dm-sans), sans-serif;
+  --font-serif: var(--font-instrument-serif), Georgia, serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+}
+
+html {
+  background-color: var(--ink-ground);
+  color: var(--text-light);
+  scroll-behavior: auto;
+  scroll-padding-top: 4.5rem;
+  overflow-x: clip;
+}
+
+body {
+  background-color: var(--ink-ground);
+  color: var(--text-light);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background-color: var(--accent);
+  color: #ffffff;
+}
+
+/* Subtle architectural grid hairline helper */
+.bg-arch-grid-dark {
+  background-image:
+    linear-gradient(to right, rgba(244, 240, 232, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(244, 240, 232, 0.045) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
+.bg-arch-grid-light {
+  background-image:
+    linear-gradient(to right, rgba(20, 19, 17, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(20, 19, 17, 0.05) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
+/* Tactile focus ring visible across both dark and warm-paper registers */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Skip-to-content accessibility link */
+.skip-link {
+  position: fixed;
+  top: -100px;
+  left: 1rem;
+  z-index: 100;
+  padding: 0.75rem 1.15rem;
+  background: var(--accent);
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: top 160ms ease;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* Masked text reveal container */
+.reveal-mask {
+  overflow: hidden;
+}
+
+/* Respect reduced motion globally */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
