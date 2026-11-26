@@ -33,6 +33,7 @@ export interface ProjectItem {
   contributions: string[];
   features: string[];
   technologies: string[];
+  imageUrl?: string;
   liveUrl?: string;
   githubUrl?: string;
 }
@@ -570,6 +571,8 @@ export const portfolioData: PortfolioData = {
           "Responsive, high-craft UI transitions",
         ],
         technologies: ["React", "TypeScript", "Three.js", "GSAP"],
+        imageUrl: "/projects/hypercar.png",
+        liveUrl: "https://hypercar-six.vercel.app/",
       },
       {
         id: "apple-showcase",
@@ -595,6 +598,8 @@ export const portfolioData: PortfolioData = {
           "Pixel-perfect responsive UI",
         ],
         technologies: ["Next.js", "Three.js", "GSAP"],
+        imageUrl: "/projects/apple-showcase.png",
+        liveUrl: "https://apple-showcase-six.vercel.app/",
       },
       {
         id: "integrity-poolscapes",
@@ -620,6 +625,8 @@ export const portfolioData: PortfolioData = {
           "SEO & mobile-first optimization",
         ],
         technologies: ["WordPress", "Elementor", "Stripe", "PayPal"],
+        imageUrl: "/projects/integrity-poolscapes.png",
+        liveUrl: "https://integritypoolscapes.com/",
       },
       {
         id: "autocv-builder",
@@ -645,6 +652,8 @@ export const portfolioData: PortfolioData = {
           "Intuitive, responsive Next.js UI",
         ],
         technologies: ["Next.js", "React", "TypeScript", "AI"],
+        imageUrl: "/projects/autocv.png",
+        liveUrl: "https://ats-cv-builder-kappa.vercel.app/",
       },
       {
         id: "docuflow-pipeline",
@@ -670,6 +679,8 @@ export const portfolioData: PortfolioData = {
           "Automated invoice & document extraction",
         ],
         technologies: ["Python 3.11", "FastAPI", "Pydantic v2"],
+        imageUrl: "/projects/docuflow.png",
+        liveUrl: "https://shahzaib-shams2023.github.io/docuflow-intelligent-document-pipeline/",
       },
       {
         id: "talentmatch-ai",
@@ -695,6 +706,8 @@ export const portfolioData: PortfolioData = {
           "Pydantic v2 structured scoring models",
         ],
         technologies: ["Python 3.11", "FastAPI", "Pydantic v2"],
+        imageUrl: "/projects/talentmatch.png",
+        liveUrl: "https://shahzaib-shams2023.github.io/talentmatch-ai-resume-screener/",
       },
     ],
   },

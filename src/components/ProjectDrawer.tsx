@@ -82,6 +82,9 @@ export function ProjectDrawer({ project, onClose }: ProjectDrawerProps) {
             theme={project.visualTheme}
             index={project.index}
             subtitle={project.subtitle}
+            name={project.name}
+            imageUrl={project.imageUrl}
+            liveUrl={project.liveUrl}
           />
         </div>
 

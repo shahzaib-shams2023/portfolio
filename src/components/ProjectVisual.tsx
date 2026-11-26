@@ -6,19 +6,41 @@ interface ProjectVisualProps {
   theme: ProjectItem["visualTheme"];
   index: string;
   subtitle: string;
+  name?: string;
+  imageUrl?: string;
+  liveUrl?: string;
 }
 
-export function ProjectVisual({ theme, index, subtitle }: ProjectVisualProps) {
-  return (
-    <div className="relative flex aspect-[16/10] w-full flex-col justify-between overflow-hidden border border-white/15 bg-[#11110f] p-5 sm:p-7">
+export function ProjectVisual({
+  theme,
+  index,
+  subtitle,
+  name,
+  imageUrl,
+  liveUrl,
+}: ProjectVisualProps) {
+  const content = (
+    <div className="group/visual relative flex aspect-[16/10] w-full flex-col justify-between overflow-hidden border border-white/15 bg-[#11110f] p-5 sm:p-7">
+      {imageUrl ? (
+        <>
+          <img
+            src={imageUrl}
+            alt={name ? `${name} preview` : `${subtitle} preview`}
+            className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover/visual:scale-[1.03]"
+          />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0b0b0a]/80 via-[#0b0b0a]/20 to-[#0b0b0a]/60" />
+        </>
+      ) : null}
+
       {/* Corner Registration Marks */}
       <div className="relative z-10 flex items-center justify-between gap-4 font-mono text-[10px] tracking-[0.16em] text-[#a9a397] uppercase">
         <span className="shrink-0">FIG. {index} {"//"} ARCHETYPE</span>
         <span className="truncate text-right text-[#c8b89a]">{subtitle}</span>
       </div>
 
-      {/* Theme-Specific Architectural Graphic */}
-      <div className="relative my-auto flex h-full w-full items-center justify-center py-3">
+      {/* Theme-Specific Architectural Graphic (fallback when no imageUrl) */}
+      {!imageUrl && (
+        <div className="relative my-auto flex h-full w-full items-center justify-center py-3">
         {theme === "topology" && (
           <svg
             viewBox="0 0 560 280"
@@ -172,6 +194,7 @@ export function ProjectVisual({ theme, index, subtitle }: ProjectVisualProps) {
           </div>
         )}
       </div>
+      )}
 
       <div className="relative z-10 flex items-center justify-between gap-4 border-t border-white/10 pt-3.5 font-mono text-[10px] tracking-[0.12em] text-[#a9a397] uppercase">
         <span className="shrink-0">System Specimen</span>
@@ -179,4 +202,20 @@ export function ProjectVisual({ theme, index, subtitle }: ProjectVisualProps) {
       </div>
     </div>
   );
+
+  if (liveUrl) {
+    return (
+      <a
+        href={liveUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`Open ${name ?? subtitle} live site`}
+        className="block transition-opacity hover:opacity-95"
+      >
+        {content}
+      </a>
+    );
+  }
+
+  return content;
 }
