@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { portfolioData } from "@/data/portfolio";
 
 interface ContactPayload {
   name: string;
@@ -125,7 +126,7 @@ export async function POST(request: Request) {
   }
 
   const resendApiKey = process.env.RESEND_API_KEY;
-  const toEmail = process.env.CONTACT_TO_EMAIL;
+  const toEmail = process.env.CONTACT_TO_EMAIL || portfolioData.identity.email;
   if (resendApiKey && toEmail) {
     try {
       const resendRes = await fetch("https://api.resend.com/emails", {
