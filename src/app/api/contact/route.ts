@@ -145,11 +145,17 @@ export async function POST(request: Request) {
       });
 
       if (!resendRes.ok) {
+        const errBody = await resendRes.json().catch(() => null);
+        const detail =
+          errBody && typeof errBody.message === "string"
+            ? errBody.message
+            : "Email delivery service returned an error.";
+        console.error("Resend error:", resendRes.status, errBody);
         return NextResponse.json(
           {
             ok: false,
             configured: true,
-            error: "Email delivery service returned an error.",
+            error: detail,
           },
           { status: 502 }
         );
